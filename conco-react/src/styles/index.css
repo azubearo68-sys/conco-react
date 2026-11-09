@@ -1,0 +1,41 @@
+/* Página 1 · Ingreso de la consulta (usa base.css) */
+.query {
+  max-width: 760px; width: 100%; padding: 32px;
+  display: flex; flex-direction: column; gap: 24px;
+  background: #fff; border: 2px solid var(--ink);
+  box-shadow: 0 8px 24px rgba(29, 51, 67, 0.14);
+}
+.query__group { display: flex; flex-direction: column; gap: 10px; }
+.query label { font-size: 16px; font-weight: 600; }
+.query input {
+  width: 100%; min-height: 56px; padding: 0 16px;
+  font: 400 20px var(--font); color: var(--ink);
+  background: #fff; border: 1.5px solid var(--ink);
+}
+.query input[aria-invalid="true"] { border-color: #B3261E; }
+.hint { font-size: 14px; color: var(--text-muted); }
+.error { font-size: 14px; font-weight: 600; color: #B3261E; }
+
+.examples { max-width: 880px; width: 100%; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.examples__list { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.chip {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+  font: 400 14px var(--font); color: var(--ink); cursor: pointer;
+  background: #fff; border: 1.5px solid var(--border);
+}
+.chip:hover { border-color: var(--ink); }
+
+.features {
+  max-width: 1040px; width: 100%; margin-top: 8px;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+}
+.feature { display: flex; gap: 14px; align-items: flex-start; }
+.feature__icon { width: 44px; height: 44px; flex: none; background: var(--fill); border: 1.5px dashed var(--border); }
+.feature h2 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.feature p { font-size: 14px; line-height: 1.45; color: var(--text-soft); }
+
+@media (max-width: 720px) {
+  .intro h1 { font-size: 32px; }
+  .query { padding: 20px; }
+  .features { grid-template-columns: 1fr; }
+}

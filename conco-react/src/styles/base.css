@@ -1,0 +1,157 @@
+/* ConCo · estilos compartidos por todas las páginas
+   (variables, encabezado, pasos, botones, barra de consulta, tarjetas, pie) */
+:root {
+  --ink: #1D3343;
+  --blue: #035C80;
+  --yellow: #FFCD02;
+  --text-soft: #3B5062;
+  --text-muted: #4A6275;
+  --border: #8FA3B2;
+  --fill: #DCE6EC;
+  --bg: #F1F5F7;
+  --font: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; min-height: 100vh;
+  display: flex; flex-direction: column;
+  font-family: var(--font); color: var(--ink); background: var(--bg);
+}
+h1, h2, p { margin: 0; }
+a { color: var(--ink); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+
+/* Header */
+.header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 12px 32px; padding: 12px 48px; min-height: 72px;
+  background: #fff; border-bottom: 1.5px solid var(--border);
+}
+.logo {
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  background: var(--ink); color: var(--yellow);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.logo--yellow { background: var(--yellow); color: var(--ink); }
+.nav { display: flex; flex-wrap: wrap; gap: 8px 32px; align-items: center; }
+.nav a {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+}
+.nav a:hover { text-decoration: underline; }
+
+/* Pasos */
+.steps {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: 12px 0; margin: 0; padding: 20px 48px; list-style: none;
+  background: #fff; border-bottom: 1.5px solid var(--border);
+}
+.step { display: flex; align-items: center; gap: 8px; color: var(--text-muted); }
+.step + .step::before {
+  content: ""; width: 36px; height: 1.5px; margin: 0 14px; background: var(--border);
+}
+.step__n {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  border: 1.5px solid var(--border);
+}
+.step--active { color: var(--ink); font-weight: 600; }
+.step--active .step__n { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+
+/* Contenido */
+.main {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  gap: 36px; padding: 64px 24px 72px;
+}
+.intro { max-width: 880px; width: 100%; text-align: center; display: flex; flex-direction: column; gap: 12px; }
+.intro h1 { font-size: 44px; line-height: 1.15; font-weight: 600; }
+.intro p { font-size: 18px; line-height: 1.5; color: var(--text-soft); }
+
+/* Botones */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 28px;
+  font: 600 18px var(--font); text-decoration: none; cursor: pointer;
+  border: 0;
+}
+.btn--primary { background: var(--yellow); color: var(--ink); }
+.btn--primary:hover { filter: brightness(0.95); }
+.btn--sm { min-height: 48px; padding: 0 24px; font-size: 16px; display: inline-flex; }
+.btn.is-disabled { opacity: 0.45; cursor: not-allowed; pointer-events: auto; }
+.btn.is-disabled:hover { filter: none; }
+
+/* Pasos completados */
+.step--done { color: var(--ink); }
+.step--done .step__n { background: var(--fill); border-color: var(--ink); font-weight: 600; }
+
+/* Footer */
+.footer { background: var(--ink); color: #fff; }
+.footer__inner {
+  max-width: 1184px; margin: 0 auto; padding: 56px 48px 0;
+  display: flex; flex-wrap: wrap; gap: 40px;
+}
+.footer__brand { flex: 2 1 280px; display: flex; flex-direction: column; gap: 16px; }
+.footer__brand p { font-size: 14px; line-height: 1.6; color: var(--fill); max-width: 360px; }
+.footer__col { flex: 1 1 170px; display: flex; flex-direction: column; }
+.footer h2 {
+  margin-bottom: 6px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--yellow);
+}
+.footer__col a, .footer__col span {
+  display: flex; align-items: center; min-height: 44px;
+  color: #fff; font-size: 15px; text-decoration: none;
+}
+.footer__col a:hover { text-decoration: underline; }
+.social { display: flex; gap: 8px; }
+.social a { width: 44px; height: 44px; border: 1.5px solid var(--border); }
+.footer__bar {
+  max-width: 1184px; margin: 40px auto 0; padding: 8px 48px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 13px; color: var(--fill);
+}
+.footer__bar span { margin-right: auto; padding: 12px 0; }
+.footer__bar a { display: inline-flex; align-items: center; min-height: 44px; color: #fff; text-decoration: none; }
+.footer__bar a:hover { text-decoration: underline; }
+
+
+/* Barra de consulta y pestañas (páginas 3 y 4) */
+.qbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 20px 48px; background: #fff; border-bottom: 1.5px solid var(--border);
+}
+.qbar__left { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.qbar__label { font-size: 13px; color: var(--text-muted); }
+.pill { padding: 8px 14px; border: 1.5px solid var(--ink); font-size: 15px; font-weight: 600; }
+.qbar a.edit { font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; }
+.tabs { display: flex; border: 1.5px solid var(--ink); font-size: 14px; background: #fff; }
+.tabs a, .tabs span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; text-decoration: none;
+}
+.tabs > * + * { border-left: 1.5px solid var(--ink); }
+.tabs .is-active { background: var(--blue); color: #fff; font-weight: 600; }
+.tabs a:hover { background: var(--fill); }
+
+
+/* Tarjetas y citas (páginas 3 y 4) */
+.box {
+  background: #fff; border: 1.5px solid var(--border);
+  box-shadow: 0 4px 14px rgba(29, 51, 67, 0.12);
+}
+.box--hl { border: 2px solid var(--ink); box-shadow: 6px 6px 0 var(--yellow); }
+.ref {
+  flex: none; padding: 1px 7px; border: 1.5px solid var(--blue); background: #E3EFF5;
+  color: var(--blue); font-size: 12px; font-weight: 600; text-decoration: none;
+}
+.note { font-size: 12px; color: var(--text-muted); }
+.btn--block { min-height: 44px; font-size: 15px; }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .header, .steps, .qbar { padding-left: 20px; padding-right: 20px; }
+  .step + .step::before { display: none; }
+  .step { margin: 0 10px; }
+  .footer__inner, .footer__bar { padding-left: 20px; padding-right: 20px; }
+}

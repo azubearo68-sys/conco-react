@@ -1,0 +1,47 @@
+/* Página 2 · Interpretación y cruce de fuentes (usa base.css) */
+.main--wide { align-items: center; padding-top: 48px; gap: 32px; }
+.intro--left { max-width: 1120px; text-align: left; gap: 8px; }
+.intro.intro--left h1 { font-size: 36px; line-height: 1.2; }
+.intro.intro--left p { font-size: 16px; }
+
+.panels { max-width: 1120px; width: 100%; display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px; }
+.panel {
+  flex: 1 1 440px; min-width: 0; padding: 28px;
+  display: flex; flex-direction: column; gap: 20px;
+  background: #fff; border: 1.5px solid var(--border);
+  box-shadow: 0 4px 14px rgba(29, 51, 67, 0.12);
+}
+.panel h2 { font-size: 20px; font-weight: 600; }
+
+.quote {
+  margin: 0; padding: 4px 0 4px 16px;
+  font-size: 16px; line-height: 1.5; color: var(--text-soft);
+  border-left: 3px solid var(--border);
+}
+.data { display: flex; flex-direction: column; gap: 8px; padding: 16px; border: 1.5px solid #C5D2DB; }
+.data__label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); }
+.data__row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.data__row strong { font-size: 18px; font-weight: 600; }
+.data__row a { font-size: 14px; }
+.data__note { font-size: 14px; color: var(--text-soft); }
+.help { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-soft); }
+.help__icon { width: 28px; height: 28px; flex: none; border: 1.5px dashed var(--border); }
+
+.source { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+.source:last-child { margin-bottom: 0; }
+.source__head { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; font-weight: 500; }
+.source__state { color: var(--text-muted); font-weight: 400; }
+.source__state.is-done { color: var(--ink); font-weight: 600; }
+.bar { height: 10px; background: #fff; border: 1.5px solid var(--border); }
+.bar__fill { width: 0; height: 100%; background: var(--blue); }
+
+.panel__actions {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+  padding-top: 16px; border-top: 1px dashed var(--border);
+}
+.panel__actions > a:first-child { font-size: 14px; }
+
+@media (max-width: 720px) {
+  .intro.intro--left h1 { font-size: 28px; }
+  .panel { padding: 20px; }
+}

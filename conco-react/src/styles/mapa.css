@@ -1,0 +1,74 @@
+/* Página 4 · Mapa (usa base.css) */
+.map-layout {
+  flex: 1; display: flex; flex-wrap: wrap; align-items: stretch; gap: 24px;
+  padding: 32px 48px 48px; width: 100%; max-width: 1440px; margin: 0 auto;
+}
+.map-side { flex: 1 1 300px; max-width: 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+.map-side .box { padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.map-side h2 { font-size: 17px; font-weight: 600; }
+.layer { display: flex; align-items: center; gap: 12px; min-height: 44px; font-size: 15px; cursor: pointer; }
+.layer input { width: 20px; height: 20px; margin: 0; accent-color: var(--blue); }
+.legend { display: flex; align-items: center; gap: 12px; font-size: 14px; }
+.legend i { flex: none; display: block; }
+.legend .sw-zone { width: 24px; height: 16px; background: rgba(3, 92, 128, 0.20); border: 1.5px solid var(--ink); }
+.legend .sw-parcel { width: 24px; height: 16px; background: #fff; border: 1.5px dashed var(--ink); }
+.legend .sw-dot { width: 14px; height: 14px; margin: 0 5px; border-radius: 50%; background: var(--ink); }
+.kv { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; }
+.kv span:first-child { color: var(--text-muted); }
+.kv span:last-child { font-weight: 600; text-align: right; }
+.map-src { font-size: 12px; color: var(--text-muted); padding-top: 6px; border-top: 1px dashed #C5D2DB; }
+
+.map-main { flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+.map {
+  position: relative; flex: 1; min-height: 640px; overflow: hidden;
+  border: 1.5px solid var(--border); background: var(--fill);
+}
+/* Mapa real (Leaflet). El contenedor crea su propio "stacking context" para que los
+   paneles de Leaflet (z-index 400+) no tapen los botones de zoom ni el selector de base. */
+.map__canvas { position: absolute; inset: 0; z-index: 0; isolation: isolate; background: var(--fill); font-family: var(--font); }
+.map__canvas.leaflet-container { font-family: var(--font); }
+.map__status {
+  position: absolute; left: 16px; top: 16px; z-index: 2; padding: 6px 12px; font-size: 13px;
+  background: #fff; border: 1.5px solid var(--border); color: var(--text-muted);
+}
+
+/* Marcadores y capas dibujadas con Leaflet */
+.pin-icon i {
+  display: block; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  background: var(--ink); border: 3px solid #fff; box-shadow: 0 0 0 1.5px var(--ink);
+}
+.stop-icon i { display: block; width: 16px; height: 16px; background: var(--blue); border: 2px solid #fff; box-shadow: 0 0 0 1.5px var(--blue); }
+.label-icon span {
+  display: inline-block; padding: 4px 10px; background: #fff; border: 1.5px solid var(--border);
+  font: 600 12px var(--font); color: var(--ink); white-space: nowrap;
+}
+
+/* Ventana de información (popup de Leaflet con el estilo del diseño) */
+.leaflet-popup-content-wrapper { border-radius: 0; border: 2px solid var(--ink); box-shadow: 0 6px 18px rgba(29, 51, 67, 0.22); padding: 0; }
+.leaflet-popup-content { margin: 0; padding: 14px 32px 14px 14px; display: flex; flex-direction: column; gap: 6px; font-family: var(--font); color: var(--ink); }
+.leaflet-popup-content strong { font-size: 15px; font-weight: 600; }
+.leaflet-popup-content .popup__txt { font-size: 13px; line-height: 1.45; color: var(--text-soft); margin: 0; }
+.leaflet-popup-content .popup__src { font-size: 12px; color: var(--text-muted); margin: 0; }
+.leaflet-popup-tip { border-radius: 0; border: 0; box-shadow: none; }
+.leaflet-container a.leaflet-popup-close-button { width: 32px; height: 32px; font: 400 20px/32px var(--font); color: var(--ink); }
+
+.map__zoom { position: absolute; right: 16px; top: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 2; }
+.map__zoom button {
+  width: 44px; height: 44px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink);
+  font: 400 22px var(--font); cursor: pointer;
+}
+.map__zoom button:last-child { font-size: 11px; padding: 0; }
+.map__zoom button:hover { background: var(--fill); }
+.map__base { position: absolute; left: 16px; bottom: 16px; z-index: 2; display: flex; border: 1.5px solid var(--ink); background: #fff; font-size: 13px; }
+.map__base button { min-height: 44px; padding: 0 14px; border: 0; background: #fff; color: var(--ink); font: 400 13px var(--font); cursor: pointer; }
+.map__base button + button { border-left: 1.5px solid var(--ink); }
+.map__base button[aria-pressed="true"] { background: var(--blue); color: #fff; font-weight: 600; }
+.map__credit { position: absolute; right: 16px; bottom: 16px; z-index: 2; padding: 4px 10px; background: #fff; border: 1.5px solid var(--border); font-size: 12px; color: var(--text-muted); }
+.map-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+.map-actions > a:first-child { font-size: 14px; display: inline-flex; align-items: center; min-height: 44px; }
+
+
+@media (max-width: 720px) {
+  .map-layout { padding-left: 20px; padding-right: 20px; }
+  .map { min-height: 480px; }
+}
